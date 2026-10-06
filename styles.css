@@ -1,0 +1,75 @@
+
+  :root{
+    --bg:#0f1117; --panel:#171a23; --panel2:#1e222e; --border:#2a2f3d;
+    --text:#f1f2f6; --text2:#9aa0ae; --accent:#4285F4; --accent2:#34a853;
+    --danger:#ea4335; --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;}
+
+  /* ===== Top bar ===== */
+  #topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 22px;border-bottom:1px solid var(--border);
+  }
+  #brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;}
+  #brand i{color:var(--accent);}
+  #auth-area{display:flex;align-items:center;gap:10px;}
+  .btn{
+    border:none;border-radius:9px;padding:9px 16px;font-size:14px;font-weight:600;
+    cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:inherit;
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{filter:brightness(1.08);}
+  .btn-ghost{background:var(--panel2);color:var(--text);border:1px solid var(--border);}
+  .btn-ghost:hover{background:#262b3a;}
+  .btn-danger{background:var(--danger);color:#fff;}
+  #user-chip{display:none;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--border);border-radius:20px;padding:4px 12px 4px 4px;}
+  #user-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;}
+  #user-name{font-size:13.5px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+  /* ===== Dashboard ===== */
+  #dashboard{max-width:900px;margin:0 auto;padding:60px 20px;}
+  #gate-msg{text-align:center;padding:80px 20px;color:var(--text2);}
+  #gate-msg i{font-size:40px;color:var(--accent);margin-bottom:14px;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px;}
+  @media(max-width:700px){.cards{grid-template-columns:1fr;}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:26px;}
+  .card h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center;gap:9px;}
+  .card h3 i{color:var(--accent);}
+  .card p{color:var(--text2);font-size:13.5px;margin:0 0 18px;line-height:1.5;}
+  .field{margin-bottom:12px;}
+  .field label{display:block;font-size:12.5px;color:var(--text2);margin-bottom:6px;}
+  .field input{
+    width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--border);
+    background:var(--panel2);color:var(--text);font-size:14px;font-family:inherit;
+  }
+  .field input:focus{outline:none;border-color:var(--accent);}
+  .not-host-note{
+    background:rgba(234,67,53,0.1);border:1px solid rgba(234,67,53,0.3);
+    border-radius:8px;padding:10px 12px;font-size:12.5px;color:#ff9b93;margin-bottom:14px;
+  }
+  .meeting-created{
+    background:rgba(52,168,83,0.1);border:1px solid rgba(52,168,83,0.3);
+    border-radius:8px;padding:14px;margin-top:16px;font-size:13.5px;display:none;
+  }
+  .meeting-created b{color:var(--accent2);}
+  .meeting-created .mc-row{display:flex;justify-content:space-between;align-items:center;margin:4px 0;}
+  .mc-copy{cursor:pointer;color:var(--accent);font-size:12px;}
+
+  /* ===== Call screen ===== */
+  #call-screen{display:none;height:100vh;flex-direction:column;}
+  #call-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:var(--panel);border-bottom:1px solid var(--border);}
+  #call-info{font-size:13.5px;color:var(--text2);display:flex;align-items:center;gap:10px;}
+  #rec-dot{width:9px;height:9px;border-radius:50%;background:var(--danger);display:none;animation:pulse 1.2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+  #jitsi-container{flex:1;background:#000;}
+
+  /* ===== Login modal ===== */
+  #login-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;}
+  #login-modal{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;text-align:center;}
+  #login-modal i.big{font-size:36px;color:var(--accent);margin-bottom:10px;}
+  #login-modal h3{margin:4px 0 8px;}
+  #login-modal p{color:var(--text2);font-size:13.5px;margin-bottom:20px;}
+  #g_id_signin_container{display:flex;justify-content:center;min-height:44px;}
+  .hidden{display:none !important;}

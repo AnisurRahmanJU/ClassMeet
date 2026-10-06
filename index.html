@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassMeet — Virtual Classroom</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"
+<!-- Google Identity Services: real login, client-side only -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<!-- Jitsi Meet IFrame API: free, public, handles all real video/audio/screen-share signaling -->
+<script src="https://meet.jit.si/external_api.js"></script>
+
+
+</head>
+<body>
+
+<div id="topbar">
+  <div id="brand"><i class="fa-solid fa-chalkboard-user"></i> ClassMeet</div>
+  <div id="auth-area">
+    <button class="btn btn-primary" id="login-btn"><i class="fa-brands fa-google"></i> Login</button>
+    <div id="user-chip">
+      <img id="user-avatar" src="" alt="">
+      <span id="user-name"></span>
+      <button class="btn btn-ghost" id="logout-btn" style="padding:6px 10px;"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div id="gate-msg">
+    <i class="fa-solid fa-lock"></i>
+    <h3>Sign in to continue</h3>
+    <p>Log in with Google to host or join a class.</p>
+  </div>
+
+  <div id="dashboard-content" class="hidden">
+    <div class="cards">
+      <div class="card">
+        <h3><i class="fa-solid fa-video"></i> Host a Class</h3>
+        <p>Only approved host emails can start a class. A unique Meeting ID and password are generated each time.</p>
+        <div id="not-host-note" class="not-host-note hidden">
+          Your account isn't on the approved host list, so you can't start a class. You can still join one below.
+        </div>
+        <div class="field">
+          <label>Class name</label>
+          <input type="text" id="class-name-input" placeholder="e.g. Physics 101">
+        </div>
+        <button class="btn btn-primary" id="host-btn" style="width:100%;justify-content:center;">
+          <i class="fa-solid fa-circle-play"></i> Start Class
+        </button>
+        <div class="meeting-created" id="meeting-created">
+          <div class="mc-row"><span>Meeting ID</span> <b id="mc-id"></b></div>
+          <div class="mc-row"><span>Password</span> <b id="mc-pass"></b></div>
+          <div class="mc-copy" id="mc-copy-btn"><i class="fa-solid fa-copy"></i> Copy details to share with students</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-right-to-bracket"></i> Join a Class</h3>
+        <p>Enter the Meeting ID and password your teacher shared with you.</p>
+        <div class="field">
+          <label>Meeting ID</label>
+          <input type="text" id="join-id-input" placeholder="e.g. 482913">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="text" id="join-pass-input" placeholder="e.g. X7P2QA">
+        </div>
+        <div class="field">
+          <label>Your display name</label>
+          <input type="text" id="join-name-input" placeholder="Your name">
+        </div>
+        <button class="btn btn-primary" id="join-btn" style="width:100%;justify-content:center;">
+          <i class="fa-solid fa-door-open"></i> Join Class
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="call-screen">
+  <div id="call-topbar">
+    <div id="call-info">
+      <span id="rec-dot"></span>
+      <span id="call-label">Class in progress</span>
+    </div>
+    <button class="btn btn-danger" id="leave-btn"><i class="fa-solid fa-phone-slash"></i> Leave &amp; Download Recording</button>
+  </div>
+  <div id="jitsi-container"></div>
+</div>
+
+<!-- Login modal -->
+<div id="login-modal-overlay">
+  <div id="login-modal">
+    <button id="login-modal-close" style="position:absolute;display:none;"></button>
+    <i class="fa-brands fa-google big"></i>
+    <h3>Sign in required</h3>
+    <p>Log in with your Google account to continue.</p>
+    <div id="g_id_signin_container"></div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
